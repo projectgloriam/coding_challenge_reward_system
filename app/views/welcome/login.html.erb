@@ -1,0 +1,26 @@
+<h1>Login</h1>
+
+<%= form_with url: auth_path, method: :post do |form| %>
+  <%= form.label :user_id, "Enter User ID" %>
+  <%= form.text_field :user_id %>
+  <%= form.submit "Login" %>
+<% end %>
+<br/>
+
+<p>Below are the list of users you can log in as.</p>
+<table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        <% @users.each do |user| %>
+            <tr>
+                <td>
+                    <%= user.id %>
+                </td>
+                <td>
+                    <%= user.name %>
+                </td>
+            </tr>
+        <% end %>
+</table>

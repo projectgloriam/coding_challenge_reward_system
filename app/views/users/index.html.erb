@@ -1,0 +1,32 @@
+<%= render "shared/notify" %>
+
+<h1>Users Index</h1>
+<table>
+        <tr>
+            <th>Name</th>
+            <th>Reward</th>
+            <th colspan=2>Actions</th>
+        </tr>
+        <% @users.each do |user| %>
+            <% next if user.id == session[:user_id] %>
+            <tr>
+                <td>
+                    <%= user.name %>
+                </td>
+                <td>
+                    <%= user.reward %>
+                </td>
+                <td>
+                    <%= link_to "Details", user %>
+                </td>
+                <td>
+                    <% if @is_user_registered == true then %>
+                        <%= link_to "Invite User", invites_path(:invitee_id => user.id), method: :post, data: { confirm: 'Are you sure you want to invite ' + user.name + '?' } %>
+                    <% end %>
+                </td>
+                <!---<td><%= link_to 'Remove', user, method: :delete, data: { confirm: 'Are you sure?' } %></td> --->
+            </tr>
+        <% end %>
+</table>
+
+<%= link_to "Add User", new_user_path %>
