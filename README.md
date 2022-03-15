@@ -1,26 +1,45 @@
 # Coding Challenge Reward System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This system (Ruby) calculates rewards based on recommendations of customers. The system uses a single controller and action for the job. I decided to use string split and regex methods to extract the customers (Party A and Party B) and their decisions (recommend or accept). Each new line is an array item. If it reaches the turn of the "accept" decision, the appropriate customers will be rewarded. i.e. (1/2)^k points for each confirmed invitation. where k is the level of the invitation. If it reaches the "recommend" decision, the customers are stored, including the invitation but the invitation is not confirmed. 
 
-Things you may want to cover:
+The endpoint is `welcome_controller.rb` in the `app/controllers/` folder. 
 
-* Ruby version is 2.7.4
+Please follow the instructions below to set up. 
 
-* Rails version is 7.0.0
+Things you may need:
 
-* System dependencies
+* Ruby version 2.7.4
 
-* Configuration
+* Rails version 7.0.0
 
-* Database creation
+## How to get started
 
-* Database initialization
+Clone the repository:
+```
+$ git clone https://github.com/projectgloriam/coding_challenge_reward_system
+```
 
-* bin/rails db:seed command
+Change to the directory
+```
+$ cd coding_challenge_reward_system
+```
 
-* How to run the test suite
+Install the gems (libraries)
+```
+$ bundle install 
+```
 
-* Deployment instructions
+Migrate the database:
+```
+$ rails db:migrate
+```
 
-* ...
+Run the app
+```
+$ rails s
+```
+
+Test the app with the sample data `example.txt` using this command
+```
+curl -X POST localhost:3000/welcome --data-binary @example.txt -H "Content-Type: text/plain"
+```

@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
   
-  get 'welcome', to: 'welcome#index'
+  post 'welcome', to: 'welcome#index'
   root to: 'welcome#index'
-
-  get 'login', to: 'welcome#login'
-  get 'logout', to: 'welcome#logout'
-  post 'auth', to: 'welcome#auth'
 
   resources :users
   resources :invites

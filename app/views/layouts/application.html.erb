@@ -11,15 +11,6 @@
   </head>
 
   <body>
-    <% if params[:action] != 'login' %>
-      <%= render "shared/nav" %>
-    <% end %>
-
-    <% flash.each do |key, value| %>
-      <p id="<%= key %>"><%= value %></p>
-    <% end %>
-
-    <% flash.discard %>
     <%= yield %>
   </body>
 </html>
